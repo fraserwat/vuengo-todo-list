@@ -1,0 +1,31 @@
+// Config for gorko
+// @import 'config';
+
+// Pull in gorko for design tokens
+// @import '../node_modules/gorko/gorko.scss';
+
+// Modern reset
+@import "reset";
+
+// Global styles
+body {
+  font-family: "Josefin Sans", sans-serif;
+}
+
+// @include media-query('md') {
+//     h1 {
+//         font-size: get-size('1000');
+//     }
+// }
+// @include media-query('lg') {
+//     h1 {
+//         font-size: get-size('1100');
+//     }
+// }
+
+// Utilities
+// @import "utilities/flow";
+@import "utilities/uppercase";
+// @import "utilities/sr-only";
+
+// Blocks

@@ -91,7 +91,19 @@ body {
   font-family: "Josefin Sans", sans-serif;
 }
 
+.reset-styles {
+  padding: unset;
+  margin: unset;
+  border: unset;
+  background-color: unset;
+}
+
 .uppercase {
   text-transform: uppercase;
+}
+
+.drop-shadow {
+  -webkit-box-shadow: 0 35px 50px -15px rgba(194, 195, 214, 0.5);
+          box-shadow: 0 35px 50px -15px rgba(194, 195, 214, 0.5);
 }
 /*# sourceMappingURL=global.css.map */

@@ -1,7 +1,7 @@
 <template>
   <section class="[ todo-list ] [ box-flex ]">
   <div class="drop-zone" @dragover="dropZoneDragOver($event)">
-      <div v-for="task in tasks" :key="task" style="margin:1rem"
+      <div v-for="task in filteredList" :key="task" style="margin:1rem"
         class="[ todo ] [ box-flex draggable ]"
         draggable="true"
         :id="task.description"
@@ -9,25 +9,29 @@
         @dragend="stopDrag($event)"
       >
         <button :aria-label="(task.status == 'todo') ? 'Complete Task': 'Undo Task Complete'"
-          v-on:click.prevent="toggleTaskStatus"
+          v-on:click.prevent="toggleTaskStatus(task.id)"
         />
         <p>{{ task.description }}</p>
+        <p>{{ task.status }}</p>
       </div>
   </div>
     <ul class="options">
       <li>{{tasks.filter(x => x.status == 'todo').length}} items left</li>
       <li>
         <fieldset class="reset-styles">
-          <input type="radio" name="filter" id="all" value="all" checked>
-          <input type="radio" name="filter" id="active" value="active">
-          <input type="radio" name="filter" id="completed" value="completed">
+          <input type="radio" @change="updateFilter($event)"
+            name="filter" id="all" value="all" checked>
+          <input type="radio" @change="updateFilter($event)"
+            name="filter" id="todo" value="active">
+          <input type="radio" @change="updateFilter($event)"
+            name="filter" id="done" value="completed">
           <label for="all">All</label>
           <label for="active">Active</label>
           <label for="completed">Completed</label>
         </fieldset>
       </li>
       <li>
-        <button class="reset-styles">
+        <button class="reset-styles" @click="clearCompleted">
           Clear Completed
         </button>
       </li>
@@ -36,16 +40,24 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapState, mapActions } from 'vuex';
 
 export default {
   name: 'ListOfTodos',
   props: {
   },
   computed: {
-    ...mapState(['tasks']),
+    ...mapState(['tasks', 'currentFilter']),
+    filteredList() {
+      if (this.currentFilter !== 'all') {
+        return this.tasks.filter((t) => t.status === this.currentFilter);
+      }
+      return this.tasks;
+    },
   },
   methods: {
+    ...mapActions(['toggleTaskStatus', 'clearCompleted', 'updateFilter']),
+
     /* eslint-disable no-param-reassign */
     startDrag(event) {
       // TODO: need to change opacity and add mid-drag styles here
@@ -82,13 +94,5 @@ export default {
     },
     /* eslint-enable no-param-reassign */
   },
-  // setup() {
-  //   const startDrag = (event, item) => {
-  //     console.log(item);
-  //     event.dataTransfer.dropEffect = 'move';
-  //     event.dataTransfer.effectAllowed = 'move';
-  //     event.dataTransfer.setData('itemID', item.id);
-  //   };
-  // },
 };
 </script>

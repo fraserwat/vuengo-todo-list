@@ -16,7 +16,10 @@ Vue / Django Todo List app, design by Frontend Mentor
 8. Create data model in the app's models.py file, and then add model name to `INSTALLED_APPS`.
 9. Set up the serializers - these are processes which allow complex data conversion to native Python data types, to be more easily renderd in JSON or XML. Create a serializers.py file inside the app folder.
 10. Set up views.py folder.
-11. Go into `python manage.py shell` and add dummy data:
+
+## Data
+
+1. Go into `python manage.py shell` and add dummy data:
 
 ```
 from task.models import Task
@@ -29,9 +32,11 @@ tasks = Task.objects.all()
 
 This should show you all the relevant tasks.
 
-##
+2. Go to the `urls.py` file in the Project directory, and register the router with your viewset you made in views.py. Make sure `include()` is imported from `django.urls`.
+3. By this point you should be able to make dummy api calls from Postman etc to get your tasks object - if this works, set up in Vue frontend!
 
 # Todo
 
 - [ ] Beef up security by replacing `CORS_ORIGIN_ALLOW_ALL` with a whitelisted domain.
 - [ ] Go through `task/views.py` line by line and work out what's going on with the different classes I've set and what the "view" does.
+- [ ] Move keys etc out of .py files into somewhere more secure. Fine on test projects, but disasterous irl!! Use GitGuardian to find all these occurances.

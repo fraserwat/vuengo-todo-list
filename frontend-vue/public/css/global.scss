@@ -1,8 +1,8 @@
 // Config for gorko
-// @import 'config';
+@import "config";
 
 // Pull in gorko for design tokens
-// @import '../node_modules/gorko/gorko.scss';
+@import "../../node_modules/gorko/gorko.scss";
 
 // Modern reset
 @import "reset";
@@ -10,6 +10,54 @@
 // Global styles
 body {
   font-family: "Josefin Sans", sans-serif;
+}
+
+h1 {
+  color: white;
+}
+
+main {
+  min-height: 100vh;
+  padding: get-size("900") get-size("500");
+  transition: 0.25s ease-in-out;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+header {
+  margin-bottom: get-size("500");
+}
+
+// Set colors
+main {
+  background-color: get-color("bg-light");
+  background-image: url("/assets/bg-mobile-light.jpg");
+}
+main *:not(h1) {
+  color: get-color("font-light");
+}
+main.darkLight-toggled {
+  background-color: get-color("bg-dark");
+  background-image: url("/assets/bg-mobile-dark.jpg");
+}
+main.darkLight-toggled *:not(h1) {
+  color: get-color("font-dark");
+}
+
+@media (prefers-color-scheme: dark) {
+  main {
+    background-color: get-color("bg-dark");
+    background-image: url("/assets/bg-mobile-dark.jpg");
+  }
+  main *:not(h1) {
+    color: get-color("font-dark");
+  }
+  main.darkLight-toggled {
+    background-color: get-color("bg-light");
+    background-image: url("/assets/bg-mobile-light.jpg");
+  }
+  main.darkLight-toggled *:not(h1) {
+    color: get-color("font-light");
+  }
 }
 
 // @include media-query('md') {
@@ -24,10 +72,14 @@ body {
 // }
 
 // Utilities
-// @import "utilities/flow";
+@import "utilities/flow";
 @import "utilities/reset-style";
 @import "utilities/uppercase";
 @import "utilities/drop-shadow";
+@import "utilities/space-between";
 // @import "utilities/sr-only";
 
 // Blocks
+@import "blocks/theme-toggle";
+@import "blocks/todo-box";
+@import "blocks/todo-checkbox";

@@ -1,0 +1,23 @@
+.todo-box {
+  width: 100%;
+  border-radius: 5px;
+}
+
+// Color logic
+.todo-box {
+  background-color: get-color("bg-light-box");
+}
+.darkLight-toggled .todo-box,
+.darkLight-toggled input {
+  background-color: get-color("bg-dark-box");
+}
+
+@media (prefers-color-scheme: dark) {
+  .todo-box {
+    background-color: get-color("bg-dark-box");
+  }
+  .darkLight-toggled .todo-box,
+  .darkLight-toggled input {
+    background-color: get-color("bg-light-box");
+  }
+}

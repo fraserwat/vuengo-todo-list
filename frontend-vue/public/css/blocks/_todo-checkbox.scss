@@ -1,0 +1,23 @@
+.todo-checkbox {
+  height: get-size("500");
+  width: get-size("500");
+  border-radius: 900px;
+}
+
+// Color logic
+.todo-checkbox.checked {
+}
+.todo-checkbox {
+  border: 1px solid get-color("outline-light");
+}
+.darkLight-toggled .todo-checkbox {
+  border: 1px solid get-color("outline-dark");
+}
+@media (prefers-color-scheme: dark) {
+  .todo-checkbox {
+    border: 1px solid get-color("outline-dark");
+  }
+  .darkLight-toggled .todo-checkbox {
+    border: 1px solid get-color("outline-light");
+  }
+}

@@ -40,3 +40,4 @@ This should show you all the relevant tasks.
 - [ ] Beef up security by replacing `CORS_ORIGIN_ALLOW_ALL` with a whitelisted domain.
 - [ ] Go through `task/views.py` line by line and work out what's going on with the different classes I've set and what the "view" does.
 - [ ] Move keys etc out of .py files into somewhere more secure. Fine on test projects, but disasterous irl!! Use GitGuardian to find all these occurances.
+- [ ] Test `prefers-color-scheme` media query.

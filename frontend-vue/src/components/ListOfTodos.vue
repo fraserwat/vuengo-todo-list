@@ -1,7 +1,7 @@
 <template>
-  <section class="[ todo-list ] [ box-flex ]">
+  <section class="[ todo-box ] [ box-flex ]">
   <div class="drop-zone" @dragover="dropZoneDragOver($event)">
-      <div v-for="task in filteredList" :key="task" style="margin:1rem"
+      <div v-for="task in filteredList" :key="task"
         class="[ todo ] [ box-flex draggable ]"
         draggable="true"
         :id="task.description"
@@ -9,6 +9,7 @@
         @dragend="stopDrag($event)"
       >
         <button :aria-label="(task.status == 'todo') ? 'Complete Task': 'Undo Task Complete'"
+          class="[ todo-checkbox ] [ reset-styles ]"
           v-on:click.prevent="toggleTaskStatus(task.id)"
         />
         <p>{{ task.description }}</p>

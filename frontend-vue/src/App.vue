@@ -1,9 +1,12 @@
 <template>
   <main class="[ app-container ] [ wrapper flow ]"
     :class="`darkLight-${this.darkLightState === true ? 'toggled' : 'default'}`">
-    <header>
-      <h1 class="uppercase">Todo</h1>
-      <button type="button" id="colour-toggle" @click="this.toggleDarkLightToggle"></button>
+    <header class="box-flex space-between">
+      <h1 class="uppercase">
+        <img src="./assets/logo.svg" alt="Todo" aria-label="Todo">
+      </h1>
+      <button type="button" class="[ theme-toggle ] [ reset-styles ]" id="colour-toggle"
+        @click="this.toggleDarkLightToggle"></button>
     </header>
     <create-new-todo />
     <list-of-todos />

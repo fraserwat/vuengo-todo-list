@@ -39,6 +39,14 @@
   background: #393a4b;
 }
 
+.bg-gradient-blue {
+  background: #55ddff;
+}
+
+.bg-gradient-purple {
+  background: #c058f3;
+}
+
 .color-bg-dark {
   color: #171823;
 }
@@ -77,6 +85,14 @@
 
 .color-outline-dark {
   color: #393a4b;
+}
+
+.color-gradient-blue {
+  color: #55ddff;
+}
+
+.color-gradient-purple {
+  color: #c058f3;
 }
 
 .box-block {
@@ -617,6 +633,10 @@ header {
   margin-bottom: 1.25rem;
 }
 
+aside {
+  text-align: center;
+}
+
 main {
   background-color: #fafafa;
   background-image: url("/assets/bg-mobile-light.jpg");
@@ -652,13 +672,40 @@ main.darkLight-toggled *:not(h1) {
   }
 }
 
+@media (min-width: 48em) {
+  main {
+    background-image: url("/assets/bg-desktop-light.jpg");
+  }
+  main.darkLight-toggled {
+    background-image: url("/assets/bg-desktop-dark.jpg");
+  }
+}
+
+@media (min-width: 48em) and (prefers-color-scheme: dark) {
+  main {
+    background-image: url("/assets/bg-desktop-dark.jpg");
+  }
+  main.darkLight-toggled {
+    background-image: url("/assets/bg-desktop-light.jpg");
+  }
+}
+
+@media (min-width: 48em) {
+  h1 img {
+    height: 1.6rem;
+  }
+  header {
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+  }
+}
+
 .flow > * + * {
   margin-top: var(--flow-space, 1em);
 }
 
 .reset-styles {
   padding: unset;
-  margin: unset;
   border: unset;
   background-color: unset;
 }
@@ -672,6 +719,22 @@ main.darkLight-toggled *:not(h1) {
           box-shadow: 0 35px 50px -15px rgba(194, 195, 214, 0.5);
 }
 
+main.darkLight-toggled .drop-shadow {
+  -webkit-box-shadow: 0 35px 50px -15px rgba(0, 0, 0, 0.5);
+          box-shadow: 0 35px 50px -15px rgba(0, 0, 0, 0.5);
+}
+
+@media (prefers-color-scheme: dark) {
+  .drop-shadow {
+    -webkit-box-shadow: 0 35px 50px -15px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 35px 50px -15px rgba(0, 0, 0, 0.5);
+  }
+  main.darkLight-toggled .drop-shadow {
+    -webkit-box-shadow: 0 35px 50px -15px rgba(194, 195, 214, 0.5);
+            box-shadow: 0 35px 50px -15px rgba(194, 195, 214, 0.5);
+  }
+}
+
 .space-between {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
@@ -679,6 +742,74 @@ main.darkLight-toggled *:not(h1) {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.wrapper {
+  max-width: 34rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.flex-col {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.todo-padding {
+  padding: 1rem 1.25rem;
+}
+
+.box-flex {
+  gap: 1.25rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.strikethrough {
+  text-decoration: line-through;
+  color: #9495a5;
+}
+
+main.darkLight-toggled .strikethrough {
+  color: #767992;
+}
+
+@media (prefers-color-scheme: dark) {
+  .strikethrough {
+    text-decoration: line-through;
+    color: #767992;
+  }
+  main.darkLight-toggled .strikethrough {
+    color: #9495a5;
+  }
+}
+
+.faint-text * {
+  color: #9495a5;
+}
+
+.darkLight-toggled .faint-text * {
+  color: #767992;
+}
+
+@media (prefers-color-scheme: dark) {
+  .faint-text * {
+    color: #767992;
+  }
+  .darkLight-toggled .faint-text * {
+    color: #9495a5;
+  }
+}
+
+.sr-only {
+  opacity: 0.1;
+  position: absolute;
+  font-size: 1px;
+  width: 1px;
+  height: 1px;
 }
 
 .theme-toggle {
@@ -726,10 +857,32 @@ main.darkLight-toggled *:not(h1) {
   }
 }
 
+.todo {
+  border-bottom: 1px solid #e3e4f1;
+}
+
+.darkLight-toggled .todo {
+  border-bottom: 1px solid #393a4b;
+}
+
+@media (prefers-color-scheme: dark) {
+  .todo {
+    border-bottom: 1px solid #393a4b;
+  }
+  .darkLight-toggled .todo {
+    border-bottom: 1px solid #e3e4f1;
+  }
+}
+
 .todo-checkbox {
   height: 1.25rem;
   width: 1.25rem;
   border-radius: 900px;
+}
+
+.todo-checkbox.checked {
+  background: linear-gradient(145deg, #55ddff, #c058f3);
+  background: url("../../assets/icon-check.svg") center center no-repeat, linear-gradient(145deg, #55ddff, #c058f3);
 }
 
 .todo-checkbox {
@@ -746,6 +899,45 @@ main.darkLight-toggled *:not(h1) {
   }
   .darkLight-toggled .todo-checkbox {
     border: 1px solid #e3e4f1;
+  }
+}
+
+form:focus-within {
+  outline: 4px solid #ffc400;
+}
+
+input[type="text"]:focus {
+  outline: none;
+}
+
+input[type="text"] {
+  width: 100%;
+  -webkit-transform: translateY(2px);
+          transform: translateY(2px);
+}
+
+.drop-zone {
+  width: 100%;
+}
+
+.options {
+  padding: 1.25rem;
+  padding-top: 0;
+}
+
+[data-device="desktop"] {
+  display: none;
+}
+
+@media (min-width: 48em) {
+  [data-device="desktop"] {
+    display: unset;
+  }
+}
+
+@media (min-width: 48em) {
+  [data-device="mobile"] {
+    display: none;
   }
 }
 /*# sourceMappingURL=global.css.map */

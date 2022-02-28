@@ -35,6 +35,10 @@ This should show you all the relevant tasks.
 2. Go to the `urls.py` file in the Project directory, and register the router with your viewset you made in views.py. Make sure `include()` is imported from `django.urls`.
 3. By this point you should be able to make dummy api calls from Postman etc to get your tasks object - if this works, set up in Vue frontend!
 
+## Deploying Django Backend
+
+1. Install gunicorn `pip install gunicorn`.
+
 # Todo
 
 - [ ] Beef up security by replacing `CORS_ORIGIN_ALLOW_ALL` with a whitelisted domain.

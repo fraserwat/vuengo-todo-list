@@ -1,0 +1,10 @@
+form:focus-within {
+  outline: 4px solid #ffc400;
+}
+input[type="text"]:focus {
+  outline: none;
+}
+input[type="text"] {
+  width: 100%;
+  transform: translateY(2px);
+}

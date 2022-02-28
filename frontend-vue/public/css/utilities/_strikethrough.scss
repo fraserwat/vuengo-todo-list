@@ -1,0 +1,16 @@
+.strikethrough {
+  text-decoration: line-through;
+  color: get-color("font-light-faint");
+}
+main.darkLight-toggled .strikethrough {
+  color: get-color("font-dark-faint");
+}
+@media (prefers-color-scheme: dark) {
+  .strikethrough {
+    text-decoration: line-through;
+    color: get-color("font-dark-faint");
+  }
+  main.darkLight-toggled .strikethrough {
+    color: get-color("font-light-faint");
+  }
+}

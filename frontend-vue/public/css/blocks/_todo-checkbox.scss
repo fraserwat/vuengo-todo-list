@@ -6,6 +6,17 @@
 
 // Color logic
 .todo-checkbox.checked {
+  background: linear-gradient(
+    145deg,
+    get-color("gradient-blue"),
+    get-color("gradient-purple")
+  );
+  background: url("../../assets/icon-check.svg") center center no-repeat,
+    linear-gradient(
+      145deg,
+      get-color("gradient-blue"),
+      get-color("gradient-purple")
+    );
 }
 .todo-checkbox {
   border: 1px solid get-color("outline-light");

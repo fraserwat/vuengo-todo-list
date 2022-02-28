@@ -1,0 +1,12 @@
+[data-device="desktop"] {
+  display: none;
+  @include media-query("md") {
+    display: unset;
+  }
+}
+
+[data-device="mobile"] {
+  @include media-query("md") {
+    display: none;
+  }
+}

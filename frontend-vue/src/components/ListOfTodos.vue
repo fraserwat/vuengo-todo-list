@@ -1,36 +1,23 @@
 <template>
-  <section class="[ todo-box ] [ box-flex ]">
+  <section class="[ todo-box ] [ box-flex flex-col wrapper drop-shadow ]">
   <div class="drop-zone" @dragover="dropZoneDragOver($event)">
       <div v-for="task in filteredList" :key="task"
-        class="[ todo ] [ box-flex draggable ]"
+        class="[ todo ] [ todo-padding box-flex draggable ]"
         draggable="true"
         :id="task.description"
         @dragstart="startDrag($event)"
         @dragend="stopDrag($event)"
       >
         <button :aria-label="(task.status == 'todo') ? 'Complete Task': 'Undo Task Complete'"
-          class="[ todo-checkbox ] [ reset-styles ]"
+          :class="`[ todo-checkbox ] [ reset-styles ${(task.status == 'todo') ? '' : 'checked'} ]`"
           v-on:click.prevent="toggleTaskStatus(task.id)"
         />
-        <p>{{ task.description }}</p>
-        <p>{{ task.status }}</p>
+        <p :class="(task.status == 'done') ? 'strikethrough' : ''">{{ task.description }}</p>
       </div>
   </div>
-    <ul class="options">
+    <ul class="[ options ] [ box-flex width-full space-between faint-text ]">
       <li>{{tasks.filter(x => x.status == 'todo').length}} items left</li>
-      <li>
-        <fieldset class="reset-styles">
-          <input type="radio" @change="updateFilter($event)"
-            name="filter" id="all" value="all" checked>
-          <input type="radio" @change="updateFilter($event)"
-            name="filter" id="todo" value="active">
-          <input type="radio" @change="updateFilter($event)"
-            name="filter" id="done" value="completed">
-          <label for="all">All</label>
-          <label for="active">Active</label>
-          <label for="completed">Completed</label>
-        </fieldset>
-      </li>
+      <li data-device="desktop"><todo-list-filter /></li>
       <li>
         <button class="reset-styles" @click="clearCompleted">
           Clear Completed
@@ -42,8 +29,10 @@
 
 <script>
 import { mapState, mapActions } from 'vuex';
+import TodoListFilter from './TodoListFilter.vue';
 
 export default {
+  components: { TodoListFilter },
   name: 'ListOfTodos',
   props: {
   },

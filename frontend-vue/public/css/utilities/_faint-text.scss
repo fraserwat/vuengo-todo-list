@@ -1,0 +1,15 @@
+.faint-text * {
+  color: get-color("font-light-faint");
+}
+.darkLight-toggled .faint-text * {
+  color: get-color("font-dark-faint");
+}
+
+@media (prefers-color-scheme: dark) {
+  .faint-text * {
+    color: get-color("font-dark-faint");
+  }
+  .darkLight-toggled .faint-text * {
+    color: get-color("font-light-faint");
+  }
+}

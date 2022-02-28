@@ -26,6 +26,9 @@ main {
 header {
   margin-bottom: get-size("500");
 }
+aside {
+  text-align: center;
+}
 
 // Set colors
 main {
@@ -60,16 +63,31 @@ main.darkLight-toggled *:not(h1) {
   }
 }
 
-// @include media-query('md') {
-//     h1 {
-//         font-size: get-size('1000');
-//     }
-// }
-// @include media-query('lg') {
-//     h1 {
-//         font-size: get-size('1100');
-//     }
-// }
+@include media-query("md") {
+  main {
+    background-image: url("/assets/bg-desktop-light.jpg");
+  }
+  main.darkLight-toggled {
+    background-image: url("/assets/bg-desktop-dark.jpg");
+  }
+  @media (prefers-color-scheme: dark) {
+    main {
+      background-image: url("/assets/bg-desktop-dark.jpg");
+    }
+    main.darkLight-toggled {
+      background-image: url("/assets/bg-desktop-light.jpg");
+    }
+  }
+}
+@include media-query("md") {
+  h1 img {
+    height: get-size("600");
+  }
+  header {
+    margin-bottom: get-size("900");
+    margin-top: get-size("900");
+  }
+}
 
 // Utilities
 @import "utilities/flow";
@@ -77,9 +95,22 @@ main.darkLight-toggled *:not(h1) {
 @import "utilities/uppercase";
 @import "utilities/drop-shadow";
 @import "utilities/space-between";
-// @import "utilities/sr-only";
+@import "utilities/wrapper";
+@import "utilities/flex-col";
+@import "utilities/todo-padding";
+@import "utilities/box-flex";
+@import "utilities/strikethrough";
+@import "utilities/faint-text";
+@import "utilities/sr-only";
 
 // Blocks
 @import "blocks/theme-toggle";
 @import "blocks/todo-box";
+@import "blocks/todo";
 @import "blocks/todo-checkbox";
+@import "blocks/input";
+@import "blocks/drop-zone";
+@import "blocks/options";
+
+// Exceptions
+@import "exceptions/data-device";

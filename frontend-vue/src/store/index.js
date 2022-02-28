@@ -20,6 +20,7 @@ export default createStore({
     },
     addTask: (state, data) => {
       state.tasks.push(data);
+      document.getElementById('input').value = '';
     },
     darkLightToggle: (state, newState) => {
       state.darkLightState = newState;

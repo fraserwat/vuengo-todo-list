@@ -1,0 +1,14 @@
+.todo {
+  border-bottom: 1px solid get-color("outline-light");
+}
+.darkLight-toggled .todo {
+  border-bottom: 1px solid get-color("outline-dark");
+}
+@media (prefers-color-scheme: dark) {
+  .todo {
+    border-bottom: 1px solid get-color("outline-dark");
+  }
+  .darkLight-toggled .todo {
+    border-bottom: 1px solid get-color("outline-light");
+  }
+}

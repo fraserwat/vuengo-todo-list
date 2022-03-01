@@ -13,3 +13,25 @@
     color: get-color("font-light-faint");
   }
 }
+
+// HOVER STATES
+
+.faint-text button:hover,
+label:hover {
+  color: get-color("font-light");
+}
+.darkLight-toggled .faint-text button:hover,
+.darkLight-toggled label:hover {
+  color: get-color("font-dark");
+}
+
+@media (prefers-color-scheme: dark) {
+  .faint-text button:hover,
+  label:hover {
+    color: get-color("font-dark");
+  }
+  .darkLight-toggled .faint-text button:hover,
+  .darkLight-toggled label:hover {
+    color: get-color("font-light");
+  }
+}

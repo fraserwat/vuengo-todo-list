@@ -6,9 +6,9 @@
       name="filter" id="todo" value="todo" :checked="currentFilter === 'todo'">
     <input type="radio" @change="updateFilter($event)" class="sr-only"
       name="filter" id="done" value="done" :checked="currentFilter === 'done'">
-    <label for="all">All</label>
-    <label for="todo">Active</label>
-    <label for="done">Completed</label>
+    <label for="all" :class="(currentFilter === 'all') ? 'active' : ''">All</label>
+    <label for="todo" :class="(currentFilter === 'todo') ? 'active' : ''">Active</label>
+    <label for="done" :class="(currentFilter === 'done') ? 'active' : ''">Completed</label>
   </fieldset>
 </template>
 
@@ -35,5 +35,11 @@ export default {
   label:nth-of-type(3) {
     margin-right: auto;
   }
-
+  #all:checked ~ label:first-of-type,
+  #todo:checked ~ label:nth-of-type(2),
+  #done:checked ~ label:last-of-type,
+  label.active {
+    color: #3A7CFD;
+    font-weight: 700;
+  }
 </style>

@@ -61,11 +61,28 @@ export default createStore({
         },
       }).then((response) => commit('updateTaskStatus', response.data));
     },
+    deleteTask({ state }, taskId) {
+      this.dispatch('getTasksFromBackend');
+      if (state.tasks.map((x) => x.id).includes(taskId)) {
+        axios({
+          method: 'delete',
+          url: `http://127.0.0.1:8000/tasks/${taskId}/`,
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          auth: {
+            username: 'admin',
+            password: '+Ut2bK.#TwwE7!5n',
+          },
+        }).then(() => {
+          this.dispatch('getTasksFromBackend');
+        });
+      }
+    },
     clearCompleted({ state }) {
       this.dispatch('getTasksFromBackend');
       state.tasks.forEach((task) => {
         if (task.status === 'done') {
-          console.log(task, `http://127.0.0.1:8000/tasks/${task.id}/`);
           axios({
             method: 'delete',
             url: `http://127.0.0.1:8000/tasks/${task.id}/`,

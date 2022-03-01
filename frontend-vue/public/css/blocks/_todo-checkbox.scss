@@ -32,3 +32,30 @@
     border: 1px solid get-color("outline-light");
   }
 }
+
+// HOVER STATES
+@mixin border-background($col) {
+  background: linear-gradient(get-color($col), get-color($col)) padding-box,
+    linear-gradient(
+        145deg,
+        get-color("gradient-blue"),
+        get-color("gradient-purple")
+      )
+      border-box;
+  border: 1px solid transparent;
+}
+
+.todo-checkbox:not(.todo-checkbox.checked):hover {
+  @include border-background("bg-light-box");
+}
+.darkLight-toggled .todo-checkbox:not(.todo-checkbox.checked):hover {
+  @include border-background("bg-dark-box");
+}
+@media (prefers-color-scheme: dark) {
+  .todo-checkbox:not(.todo-checkbox.checked):hover {
+    @include border-background("bg-dark-box");
+  }
+  .darkLight-toggled .todo-checkbox:not(.todo-checkbox.checked):hover {
+    @include border-background("bg-light-box");
+  }
+}

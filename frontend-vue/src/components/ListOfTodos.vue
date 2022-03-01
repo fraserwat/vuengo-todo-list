@@ -13,6 +13,9 @@
           v-on:click.prevent="toggleTaskStatus(task.id)"
         />
         <p :class="(task.status == 'done') ? 'strikethrough' : ''">{{ task.description }}</p>
+        <button class="[ cross ] [ reset-styles ]" @click="deleteTask(task.id)">
+          <img src="../assets/icon-cross.svg" alt="">
+        </button>
       </div>
   </div>
     <ul class="[ options ] [ box-flex width-full space-between faint-text ]">
@@ -46,7 +49,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions(['toggleTaskStatus', 'clearCompleted', 'updateFilter']),
+    ...mapActions(['toggleTaskStatus', 'clearCompleted', 'updateFilter', 'deleteTask']),
 
     /* eslint-disable no-param-reassign */
     startDrag(event) {

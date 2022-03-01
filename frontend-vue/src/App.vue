@@ -11,7 +11,7 @@
     <create-new-todo />
     <list-of-todos />
     <todo-list-filter
-      class="[ todo-box ] [ todo-padding box-flex drop-shadow wrapper gap-top-600 gap-bottom-900 ]"
+      class="[ todo-box ] [ todo-padding box-flex drop-shadow wrapper gap-top-600 ]"
       data-device="mobile" />
     <aside class="[ wrapper ] [ faint-text ]">
       <p>Drag and drop to reorder list</p>

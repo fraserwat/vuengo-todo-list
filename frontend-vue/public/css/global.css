@@ -635,6 +635,13 @@ header {
 
 aside {
   text-align: center;
+  margin-top: 3rem !important;
+}
+
+button,
+label,
+.draggable {
+  cursor: pointer;
 }
 
 main {
@@ -804,6 +811,27 @@ main.darkLight-toggled .strikethrough {
   }
 }
 
+.faint-text button:hover,
+label:hover {
+  color: #494c6b;
+}
+
+.darkLight-toggled .faint-text button:hover,
+.darkLight-toggled label:hover {
+  color: #c8cbe7;
+}
+
+@media (prefers-color-scheme: dark) {
+  .faint-text button:hover,
+  label:hover {
+    color: #c8cbe7;
+  }
+  .darkLight-toggled .faint-text button:hover,
+  .darkLight-toggled label:hover {
+    color: #494c6b;
+  }
+}
+
 .sr-only {
   opacity: 0.1;
   position: absolute;
@@ -902,6 +930,27 @@ main.darkLight-toggled .strikethrough {
   }
 }
 
+.todo-checkbox:not(.todo-checkbox.checked):hover {
+  background: linear-gradient(#fff, #fff) padding-box, linear-gradient(145deg, #55ddff, #c058f3) border-box;
+  border: 1px solid transparent;
+}
+
+.darkLight-toggled .todo-checkbox:not(.todo-checkbox.checked):hover {
+  background: linear-gradient(#25273d, #25273d) padding-box, linear-gradient(145deg, #55ddff, #c058f3) border-box;
+  border: 1px solid transparent;
+}
+
+@media (prefers-color-scheme: dark) {
+  .todo-checkbox:not(.todo-checkbox.checked):hover {
+    background: linear-gradient(#25273d, #25273d) padding-box, linear-gradient(145deg, #55ddff, #c058f3) border-box;
+    border: 1px solid transparent;
+  }
+  .darkLight-toggled .todo-checkbox:not(.todo-checkbox.checked):hover {
+    background: linear-gradient(#fff, #fff) padding-box, linear-gradient(145deg, #55ddff, #c058f3) border-box;
+    border: 1px solid transparent;
+  }
+}
+
 form:focus-within {
   outline: 4px solid #ffc400;
 }
@@ -923,6 +972,14 @@ input[type="text"] {
 .options {
   padding: 1.25rem;
   padding-top: 0;
+}
+
+.cross {
+  margin-left: auto;
+}
+
+.cross img {
+  height: 1rem;
 }
 
 [data-device="desktop"] {

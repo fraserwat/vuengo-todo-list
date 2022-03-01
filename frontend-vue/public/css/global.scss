@@ -28,6 +28,12 @@ header {
 }
 aside {
   text-align: center;
+  margin-top: get-size("900") !important;
+}
+button,
+label,
+.draggable {
+  cursor: pointer;
 }
 
 // Set colors
@@ -79,6 +85,7 @@ main.darkLight-toggled *:not(h1) {
     }
   }
 }
+
 @include media-query("md") {
   h1 img {
     height: get-size("600");
@@ -111,6 +118,7 @@ main.darkLight-toggled *:not(h1) {
 @import "blocks/input";
 @import "blocks/drop-zone";
 @import "blocks/options";
+@import "blocks/cross";
 
 // Exceptions
 @import "exceptions/data-device";

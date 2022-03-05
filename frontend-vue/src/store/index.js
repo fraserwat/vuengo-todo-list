@@ -36,10 +36,10 @@ export default createStore({
     getTasksFromBackend({ commit }) {
       axios({
         method: 'get',
-        url: 'http://127.0.0.1:8000/tasks/',
+        url: process.env.VUE_APP_API_URL,
         auth: {
-          username: 'admin',
-          password: '+Ut2bK.#TwwE7!5n',
+          username: process.env.VUE_APP_USERNAME,
+          password: process.env.VUE_APP_PASSWORD,
         },
       }).then((response) => commit('updateTasks', response.data));
     },
@@ -47,13 +47,13 @@ export default createStore({
       const index = state.tasks.findIndex((x) => x.id === taskId);
       axios({
         method: 'put',
-        url: `http://127.0.0.1:8000/tasks/${taskId}/`,
+        url: `${process.env.VUE_APP_API_URL}${taskId}/`,
         headers: {
           'Content-Type': 'application/json',
         },
         auth: {
-          username: 'admin',
-          password: '+Ut2bK.#TwwE7!5n',
+          username: process.env.VUE_APP_USERNAME,
+          password: process.env.VUE_APP_PASSWORD,
         },
         data: {
           status: (state.tasks[index].status === 'todo') ? 'done' : 'todo',
@@ -66,13 +66,13 @@ export default createStore({
       if (state.tasks.map((x) => x.id).includes(taskId)) {
         axios({
           method: 'delete',
-          url: `http://127.0.0.1:8000/tasks/${taskId}/`,
+          url: `${process.env.VUE_APP_API_URL}${taskId}/`,
           headers: {
             'Content-Type': 'application/json',
           },
           auth: {
-            username: 'admin',
-            password: '+Ut2bK.#TwwE7!5n',
+            username: process.env.VUE_APP_USERNAME,
+            password: process.env.VUE_APP_PASSWORD,
           },
         }).then(() => {
           this.dispatch('getTasksFromBackend');
@@ -85,13 +85,13 @@ export default createStore({
         if (task.status === 'done') {
           axios({
             method: 'delete',
-            url: `http://127.0.0.1:8000/tasks/${task.id}/`,
+            url: `${process.env.VUE_APP_API_URL}${task.id}/`,
             headers: {
               'Content-Type': 'application/json',
             },
             auth: {
-              username: 'admin',
-              password: '+Ut2bK.#TwwE7!5n',
+              username: process.env.VUE_APP_USERNAME,
+              password: process.env.VUE_APP_PASSWORD,
             },
           }).then(() => {
             this.dispatch('getTasksFromBackend');
@@ -104,10 +104,10 @@ export default createStore({
       if (taskName) {
         axios({
           method: 'post',
-          url: 'http://127.0.0.1:8000/tasks/',
+          url: process.env.VUE_APP_API_URL,
           auth: {
-            username: 'admin',
-            password: '+Ut2bK.#TwwE7!5n',
+            username: process.env.VUE_APP_USERNAME,
+            password: process.env.VUE_APP_PASSWORD,
           },
           data: {
             description: taskName,

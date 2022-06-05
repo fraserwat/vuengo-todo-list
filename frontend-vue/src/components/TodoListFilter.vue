@@ -1,14 +1,14 @@
 <template>
   <fieldset class="reset-styles faint-text box-flex">
     <input type="radio" @change="updateFilter($event)" class="sr-only"
-      name="filter" id="all" value="all" :checked="currentFilter === 'all'">
+      name="filter" id="input-all" value="all" :checked="currentFilter === 'all'">
     <input type="radio" @change="updateFilter($event)" class="sr-only"
-      name="filter" id="todo" value="todo" :checked="currentFilter === 'todo'">
+      name="filter" id="input-todo" value="todo" :checked="currentFilter === 'todo'">
     <input type="radio" @change="updateFilter($event)" class="sr-only"
-      name="filter" id="done" value="done" :checked="currentFilter === 'done'">
-    <label for="all" :class="(currentFilter === 'all') ? 'active' : ''">All</label>
-    <label for="todo" :class="(currentFilter === 'todo') ? 'active' : ''">Active</label>
-    <label for="done" :class="(currentFilter === 'done') ? 'active' : ''">Completed</label>
+      name="filter" id="input-done" value="done" :checked="currentFilter === 'done'">
+    <label for="input-all" :class="(currentFilter === 'all') ? 'active' : ''">All</label>
+    <label for="input-todo" :class="(currentFilter === 'todo') ? 'active' : ''">Active</label>
+    <label for="input-done" :class="(currentFilter === 'done') ? 'active' : ''">Completed</label>
   </fieldset>
 </template>
 

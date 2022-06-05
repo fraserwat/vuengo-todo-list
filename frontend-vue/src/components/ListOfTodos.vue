@@ -13,7 +13,7 @@
           v-on:click.prevent="toggleTaskStatus(task.id)"
         />
         <p :class="(task.status == 'done') ? 'strikethrough' : ''">{{ task.description }}</p>
-        <button class="[ cross ] [ reset-styles ]" @click="deleteTask(task.id)">
+        <button class="[ cross ] [ reset-styles ]" @click="deleteTask(task.id)" aria-label="Delete Task">
           <img src="../assets/icon-cross.svg" alt="">
         </button>
       </div>

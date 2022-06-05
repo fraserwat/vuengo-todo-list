@@ -5,7 +5,7 @@
       <h1 class="uppercase">
         <img src="./assets/logo.svg" alt="Todo" aria-label="Todo">
       </h1>
-      <button type="button" class="[ theme-toggle ] [ reset-styles ]" id="colour-toggle"
+      <button type="button" class="[ theme-toggle ] [ reset-styles ]" id="colour-toggle" aria-label="Dark Mode Toggle"
         @click="this.toggleDarkLightToggle"></button>
     </header>
     <create-new-todo />

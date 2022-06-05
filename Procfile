@@ -1,1 +1,1 @@
-web: cd backend-django && cd todo_list && gunicorn todo_list.wsgi
+web: cd backend-django/todo_list/ && gunicorn todo_list.wsgi

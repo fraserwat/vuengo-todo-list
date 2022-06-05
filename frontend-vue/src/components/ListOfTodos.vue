@@ -4,7 +4,7 @@
       <div v-for="task in filteredList" :key="task"
         class="[ todo ] [ todo-padding box-flex draggable ]"
         draggable="true"
-        :id="str(task.description).replace(' ', '-')"
+        :id="task.description.replace(' ', '-')"
         @dragstart="startDrag($event)"
         @dragend="stopDrag($event)"
       >

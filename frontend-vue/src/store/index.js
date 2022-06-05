@@ -34,14 +34,8 @@ export default createStore({
       commit('updateFilter', event.target.id);
     },
     getTasksFromBackend({ commit }) {
-      axios({
-        method: 'get',
-        url: process.env.VUE_APP_API_URL,
-        auth: {
-          username: process.env.VUE_APP_USERNAME,
-          password: process.env.VUE_APP_PASSWORD,
-        },
-      }).then((response) => commit('updateTasks', response.data));
+      axios.get('https://vuengo-todo-list-backend.herokuapp.com/api/')
+        .then((response) => commit('updateTasks', response.data));
     },
     toggleTaskStatus({ state, commit }, taskId) {
       const index = state.tasks.findIndex((x) => x.id === taskId);

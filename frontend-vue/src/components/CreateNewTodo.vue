@@ -1,7 +1,8 @@
 <template>
   <form class="[ todo-box ] [ todo-padding box-flex drop-shadow wrapper ]"
     v-on:submit.prevent="setNewTask">
-    <button type="submit" class="[ todo-checkbox ] [ reset-styles ]" aria-label="Create Task"></button>
+    <button type="submit" class="[ todo-checkbox ] [ reset-styles ]"
+      aria-label="Create Task"></button>
     <input id="input" type="text" class="reset-styles"
       placeholder="Create a new todo..." aria-placeholder="Create a new todo" >
   </form>

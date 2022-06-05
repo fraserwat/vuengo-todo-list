@@ -4,7 +4,7 @@
       <div v-for="task in filteredList" :key="task"
         class="[ todo ] [ todo-padding box-flex draggable ]"
         draggable="true"
-        :id="task.description"
+        :id="str(task.description).replace(' ', '-')"
         @dragstart="startDrag($event)"
         @dragend="stopDrag($event)"
       >
@@ -13,7 +13,8 @@
           v-on:click.prevent="toggleTaskStatus(task.id)"
         />
         <p :class="(task.status == 'done') ? 'strikethrough' : ''">{{ task.description }}</p>
-        <button class="[ cross ] [ reset-styles ]" @click="deleteTask(task.id)" aria-label="Delete Task">
+        <button class="[ cross ] [ reset-styles ]" @click="deleteTask(task.id)"
+          aria-label="Delete Task">
           <img src="../assets/icon-cross.svg" alt="">
         </button>
       </div>
